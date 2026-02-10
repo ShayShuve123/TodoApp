@@ -1,5 +1,12 @@
+"""How connecting to the db"""
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
 
-SQLALCHEMY_DATABASE_URL = 'sql:///./todos.db' # used to create a location of this db on our fastapi application
+SQLALCHEMY_DATABASE_URL = 'sqlite:///todosapp.db' # use to create a location of this db on fastapi
 
-create_engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={}) # db agent to Opan up a connction to use our db
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={'check_same_thread': False})
+
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base() # object DB
