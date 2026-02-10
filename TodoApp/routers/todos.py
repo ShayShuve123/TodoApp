@@ -7,7 +7,7 @@ from sqlalchemy.orm.session import Session
 from fastapi import APIRouter
 
 from dependencies import get_db
-from modules import Todos
+from db_modules import Todos
 
 from schemas.todos import TodoRequest
 
