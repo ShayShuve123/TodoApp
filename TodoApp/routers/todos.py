@@ -16,7 +16,7 @@ todos_router = APIRouter()
 db_dependency = Annotated[Session, Depends(get_db)]
 
 @todos_router.get("/")
-def read_all_todos(db: db_dependency):  # TODO: fix--> up to python 3.9 Annotated[Session, Depends(get_db)
+def read_all_todos(db: db_dependency):
     return db.query(Todos).all()
 
 
